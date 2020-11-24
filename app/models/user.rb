@@ -1,41 +1,31 @@
 class User < ApplicationRecord
 
-  validates :slug, uniqueness: true
-
-  def create_slug
-    #index = self.full_name.index(' ')
-   # self.full_name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/,'')[index+2..-1]
-  
-  end
-
-  def update_slug
-    update_attributes slug: assign_slug
-  end
-  private
-  def assign_slug
-    self.slug = create_slug
-  end
-
-  after_update :assign_slug
+  before_create :set_admin, :create_slug
+  validates :email, uniqueness: true
+  #validates :full_name, presence: true
+ # validates :slug, uniqueness: true
 
   enum role: [:admin, :author, :editor]
-  after_initialize :set_default_role, :if => :new_record?
+  after_initialize :set_default_role, if: :new_record?
 
   def set_default_role
     self.role ||= :author
+  end
+
+  def create_slug
+    if full_name
+      full_name_split = self.full_name.split(" ");
+      self.slug = full_name_split[0].to_s + "-" + full_name_split[1]&.first.to_s;
+    end
+  end
+
+  def set_admin
+    self.role = :admin if User.count == 0
   end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  after_create do 
-    if User.count == 1
-      self.role = :admin
-      self.admin = true
-      self.save
-    end
-  end
 
 end

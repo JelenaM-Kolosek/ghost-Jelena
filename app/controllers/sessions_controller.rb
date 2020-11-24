@@ -1,18 +1,9 @@
 class SessionsController < Devise::SessionsController
 
-    def new
-        super
+    private
+
+    def sign_up_params
+      params.require(:user).permit(:full_name, :email, :password, :password_confirmation)
     end
 
-    def create
-        super  
-    end
-
-    def update
-        super
-    end
-    
-    def destroy
-        super
-    end
 end
