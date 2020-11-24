@@ -1,10 +1,12 @@
 class User < ApplicationRecord
+  has_attached_file :image, default_url: ":style/avatar.png", :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
-  validates :slug, uniqueness: true
+  #validates :slug, uniqueness: true
 
   def create_slug
     #index = self.full_name.index(' ')
-   # self.full_name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/,'')[index+2..-1]
+   #self.full_name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/,'')[index+2..-1]
   
   end
 
