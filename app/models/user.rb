@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   after_create do 
-    if User.all.count == 1
+    if User.count == 1
       self.admin = true
       self.save
     end

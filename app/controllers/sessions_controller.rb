@@ -5,7 +5,7 @@ class SessionsController < Devise::SessionsController
     end
 
     def create
-        super
+        super  
     end
 
     def update
@@ -15,5 +15,4 @@ class SessionsController < Devise::SessionsController
     def destroy
         super
     end
-
 end
