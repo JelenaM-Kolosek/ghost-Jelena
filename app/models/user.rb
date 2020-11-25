@@ -2,8 +2,6 @@ class User < ApplicationRecord
 
   before_create :set_admin, :create_slug
   validates :email, uniqueness: true
-  validates :full_name, presence: true
-  validates :slug, uniqueness: true
 
   enum role: [:admin, :author, :editor]
   after_initialize :set_default_role, if: :new_record?
@@ -23,9 +21,10 @@ class User < ApplicationRecord
     self.role = :admin if User.count == 0
   end
 
+  scope :pending, -> { where(invitation_accepted_at: nil)}
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
+  devise :invitable, :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, invite_for: 7.days
 end
