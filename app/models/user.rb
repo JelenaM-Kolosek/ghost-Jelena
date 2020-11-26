@@ -2,15 +2,8 @@ class User < ApplicationRecord
 
   before_create :set_admin, :create_slug
   validates :email, uniqueness: true
-  validates :full_name, presence: true
-  validates :slug, uniqueness: true
 
   enum role: [:admin, :author, :editor]
-  after_initialize :set_default_role, if: :new_record?
-
-  def set_default_role
-    self.role ||= :author
-  end
 
   def create_slug
     if full_name
