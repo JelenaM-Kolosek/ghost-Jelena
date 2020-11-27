@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? || user.admin?
+    user.admin?
   end
 
   def show?
