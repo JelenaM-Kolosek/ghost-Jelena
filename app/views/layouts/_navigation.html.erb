@@ -1,5 +1,24 @@
-<p>
+<ul class="nav nav-tabs">
 <% if user_signed_in? %>
-<%= link_to "Your profile", user_path(current_user.id)%>
-<%end%>
-</p>
+    <li class="nav-item">
+     <%= current_user.email%>
+    </li>
+  <li class="nav-item">
+  <%= link_to "Your profile", user_path(current_user.id), class: "nav-link active"%>
+
+  </li>
+  <li class="nav-item">
+  <%= link_to "Team", user_team_path(current_user), class: "nav-link"%>
+  </li>
+  <li class="nav-item">
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link"  %>
+  </li>
+  <%else%>
+  <li class="nav-item">
+  <%= link_to "Sign up", new_user_registration_path, class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+  <%= link_to "Login", new_user_session_path, class: 'nav-link' %>
+  </li>
+  <%end%>
+</ul>
