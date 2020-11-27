@@ -57,11 +57,24 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'bootstrap', '~> 4.0.0'
+# Authentication
 gem 'devise'
 gem 'devise_invitable', '~>2.0.3'
+# Jquery
 gem 'jquery-rails'
+# Automatic email
 gem 'letter_opener'
+# Formatter
 gem 'prettier'
+# Authorization
 gem 'pundit'
+# Formatter
 gem 'rubocop-rails', require: false
+# Slug
 gem 'slug'
+# Decorator
+gem 'draper'
+# Pagination
+gem 'kaminari'
+# Active link
+gem 'active_link_to'

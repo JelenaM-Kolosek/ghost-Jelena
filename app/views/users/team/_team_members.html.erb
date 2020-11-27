@@ -9,14 +9,16 @@
       </tr>
     </thead>
     <tbody>
-    <% User.accepted.each do |user| %>
+    <% @accepted_users.each do |user| %>
       <tr>
         <td>image</td>
         <td><%= user.full_name %></td>
         <td><%= user.email %></td>
         <td><%= user.role %></td>
-        <td>Lasst seen</td>
+        <td><%= user.last_sign_in %></td>
       </tr>
       <%end%>
+    <%= paginate @accepted_users %>
+    <%= link_to_next_page @accepted_users, 'Next Page' %>
     </tbody>
   </table>

@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   scope :pending, -> { where.not(invitation_token: true) }
   # User
-  scope :accepted, -> { where(not(User.where.not(invitation_token: true))) }
+  scope :accepted, -> { where(!User.where.not(invitation_token: true)) }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -29,5 +29,6 @@ class User < ApplicationRecord
          :recoverable,
          :rememberable,
          :validatable,
+         :trackable,
          invite_for: 7.days
 end

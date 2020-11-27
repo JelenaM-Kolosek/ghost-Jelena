@@ -4,21 +4,23 @@
      <%= current_user.email%>
     </li>
   <li class="nav-item">
-  <%= link_to "Your profile", user_path(current_user.id), class: "nav-link active"%>
+  <%= active_link_to "Your profile" , user_path(current_user.id), active: :exclusive, class: "nav-link "%>
 
   </li>
+  <%if current_user.admin? %>
   <li class="nav-item">
-  <%= link_to "Team", user_team_path(current_user), class: "nav-link"%>
+  <%= active_link_to "Team", user_team_path(current_user), class: "nav-link"%>
   </li>
+  <%end%>
   <li class="nav-item">
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link"  %>
+  <%= active_link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link"  %>
   </li>
   <%else%>
   <li class="nav-item">
-  <%= link_to "Sign up", new_user_registration_path, class: 'nav-link' %>
+  <%= active_link_to "Sign up", new_user_registration_path, class: 'nav-link' %>
   </li>
   <li class="nav-item">
-  <%= link_to "Login", new_user_session_path, class: 'nav-link' %>
+  <%= active_link_to "Login", new_user_session_path, class: 'nav-link' %>
   </li>
   <%end%>
 </ul>
