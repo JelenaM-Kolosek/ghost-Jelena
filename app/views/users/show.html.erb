@@ -4,7 +4,7 @@
 
   <%= image_tag @user.image.url(:thumb), class: 'avatarimg' %>
 
-<%= link_to 'Edit image', user_new_avatar_path(@user),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
+<%= link_to 'Edit image', user_new_avatar_path(@user),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#exampleModalCenter', class: 'btn btn-primary btn-lg'}  %>
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
