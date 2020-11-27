@@ -1,5 +1,5 @@
 
-<div>
+<div class="k-user-wrapper">
 <p id="notice"><%= notice %></p>
 
   <%= image_tag @user.image.url(:thumb), class: 'avatarimg' %>
@@ -13,8 +13,6 @@
     </div>
     </div>
   </div>
-
-
 <p>
   <strong>Full name:</strong>
   <%= @user.full_name %>
@@ -41,5 +39,5 @@
   <%= @user.slug %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user.id) %>
+<%= link_to 'Edit', edit_user_path(@user.id), class: 'btn btn-primary k-btn' %>
 </div>

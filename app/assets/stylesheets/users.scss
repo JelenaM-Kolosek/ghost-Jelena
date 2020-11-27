@@ -9,3 +9,17 @@
     align-items: center;
     width: 200px;
 }
+
+.k-user-wrapper{
+  padding: 100px;
+  border: 2px solid black;
+  box-shadow: 2px 2px black;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.k-btn{
+  padding: 10px;
+}
