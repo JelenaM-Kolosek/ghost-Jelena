@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_26_082121) do
+ActiveRecord::Schema.define(version: 2020_11_26_140815) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 2020_11_26_082121) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "full_name"
     t.string "slug"
     t.text "bio"
+    t.integer "role"
     t.string "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_082121) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.integer "role", default: 2
+    t.string "full_name", default: ""
     t.string "image_file_name"
     t.string "image_content_type"
     t.integer "image_file_size"
