@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   include UsersHelper
-
+  before_action :set_user, only: [:show, :edit, :update]
+  
   def show
     @user = User.find(params[:id])
   end
@@ -22,11 +23,17 @@ class UsersController < ApplicationController
       end
     end
   end
-
+  
   def new_avatar
     respond_to do |format|
       format.html
       format.js
     end
   end
+
+   private 
+   def set_user
+     @user = User.find(params[:id])
+   end
+
 end
