@@ -1,34 +1,32 @@
 class UsersController < ApplicationController
+  include UsersHelper
 
-    include UsersHelper
+  def show
+    @user = User.find(params[:id])
+  end
 
-    def show 
-        @user = User.find(params[:id])
-    end
+  def edit
+    @user = User.find(params[:id])
+  end
 
-    def edit
-        @user = User.find(params[:id])
-    end
-
-    def update
-        @user = User.find(params[:id])
-        authorize @user
-        respond_to do |format|
-            if @user.update(user_params)
-              format.html { redirect_to @user, notice: 'User was successfully updated.' }
-              format.json { render :show, status: :ok, location: @user }
-            else
-              format.html { render :edit }
-              format.json { render json: @user.errors, status: :unprocessable_entity }
-            end
-          end
+  def update
+    @user = User.find(params[:id])
+    authorize current_user
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-
-    def new_avatar
-        respond_to do |format|
-        format.html
-        format.js
-        end
     end
+  end
 
+  def new_avatar
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 end

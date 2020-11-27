@@ -13,6 +13,7 @@
  */
 
  @import 'bootstrap';
+ @import 'users';
 
  .main-app{
      display: flex;
@@ -20,10 +21,3 @@
      align-items: center;
      justify-content: center;
  }
-
- .avatarimg{
-     padding: 10px;
-    display: flex;
-    align-items: center;
-    width: 200px;
-}
