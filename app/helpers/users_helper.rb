@@ -8,6 +8,7 @@ module UsersHelper
       :bio,
       :slug,
       :password
+      :image
     )
   end
 end

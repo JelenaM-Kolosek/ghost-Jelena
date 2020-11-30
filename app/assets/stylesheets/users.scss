@@ -1,18 +1,23 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-.k-background{
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
+ .avatarimg{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    width: 200px;
 }
- 
-.k-wrapper{
+
+.k-user-wrapper{
+  padding: 100px;
+  border: 2px solid black;
+  box-shadow: 2px 2px black;
+  display: flex;
   align-content: center;
   justify-content: center;
-  border: 2px solid black;
-  width: 700px;
-  padding: 30px;
-  box-shadow: 5px 10px;
+  flex-direction: column;
+}
+
+.k-btn{
+  padding: 10px;
 }
