@@ -7,7 +7,7 @@ module UsersHelper
       :role,
       :bio,
       :slug,
-      :password
+      :password,
       :image
     )
   end
