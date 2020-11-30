@@ -9,7 +9,9 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-ActiveRecord::Schema.define(version: 2020_11_27_160217) do
+
+ActiveRecord::Schema.define(version: 2020_11_30_122624) do
+
   create_table "stories", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -35,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_11_27_160217) do
   end
 
 # Could not dump table "users" because of following StandardError
-#   Unknown type '' for column 'current_sign_in_ip'
+#   Unknown type 'inet' for column 'current_sign_in_ip'
 
   add_foreign_key "stories", "users"
   add_foreign_key "taggings", "stories"

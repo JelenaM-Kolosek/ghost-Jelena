@@ -4,13 +4,13 @@
      <%= current_user.email%>
     </li>
   <li class="nav-item">
-  <%= link_to "Your profile", user_path(current_user.id), class: "nav-link active"%>
+  <%= active_link_to "Your profile", user_path(current_user.id), active: :exclusive, class: "nav-link"%>
   </li>
   <li class="nav-item">
   <%= active_link_to "Team", user_team_path(current_user), class: "nav-link"%>
   </li>
    <li class="nav-item">
-  <%= link_to "Story", stories_path, class: "nav-link"  %>
+  <%= active_link_to "Story", stories_path, class: "nav-link"  %>
   </li>
   <li class="nav-item">
   <%= active_link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link"  %>

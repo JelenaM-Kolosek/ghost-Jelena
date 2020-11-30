@@ -2,7 +2,7 @@ class Story < ApplicationRecord
   default_scope { order(created_at: :desc) }
   belongs_to :user
   has_many :taggings
-  has_many :tags, through: :taggings
+  has_many :tags, through: :taggings, dependent: :destroy
 
   scope :stories_author, ->(user) { where(user_id: user.id) }
 
