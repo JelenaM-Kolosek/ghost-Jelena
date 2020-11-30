@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   include UsersHelper
   before_action :set_user, only: %i[show edit update]
-
-  def show; end
-
-  def edit; end
+  
+  def show;end
+  
+  def edit;end
 
   def update
     authorize current_user
@@ -44,4 +44,5 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+  
 end

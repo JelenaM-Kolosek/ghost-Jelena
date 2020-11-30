@@ -3,8 +3,13 @@
     <h1><%= @story.title%></h1>
     <h3><%= @story.user.full_name %></h3>
     <p><%= @story.content %></p>
+    <p>
+      <% @story.tags.each do |tag|%>
+        <%= tag.tag_name%>
+      <%end%>
+    </p>
     <p>Last update at <%= @story.last_update %></p>
-    <%= link_to "Update", edit_story_path(@story), class: "btn btn-primary" %>
-    <%= link_to "Delete", story_path(@story), method: :delete, data: {confirm: "Do you really want to delete the story?"}, class: "btn btn-primary" %>
+    <%= link_to "Update", edit_story_path(@story), class: "btn btn-primary k-story-btn" %>
+    <%= link_to "Delete", story_path(@story), method: :delete, data: {confirm: "Do you really want to delete the story?"}, class: "btn btn-primary k-story-btn" %>
   </div>
 </div>
