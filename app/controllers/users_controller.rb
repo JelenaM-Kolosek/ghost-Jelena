@@ -21,6 +21,9 @@ class UsersController < ApplicationController
   end
 
   def team
+    authorize current_user
+    @pending_users = User.pending.decorate
+    @accepted_users = Kaminari.paginate_array(User.accepted.decorate).page(params[:page]).per(20)
     render template: 'users/team/team'
   end
 

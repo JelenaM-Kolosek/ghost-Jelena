@@ -16,4 +16,8 @@ class UserPolicy < ApplicationPolicy
   def user_invite?
     user.admin?
   end
+
+  def team?
+    user.admin?
+  end
 end
