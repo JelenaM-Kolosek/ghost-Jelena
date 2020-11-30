@@ -1,16 +1,12 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: %i[show edit update]
   include UsersHelper
 
-  def show
-    @user = User.find(params[:id])
-  end
+  def show; end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @user = User.find(params[:id])
     authorize current_user
     respond_to do |format|
       if @user.update(user_params)
@@ -23,10 +19,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def new_avatar
-    respond_to do |format|
-      format.html
-      format.js
-    end
+  def set_user
+    @user = User.find(params[:id]).decorate
   end
 end
