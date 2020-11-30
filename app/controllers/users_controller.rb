@@ -1,17 +1,12 @@
 class UsersController < ApplicationController
   include UsersHelper
-  before_action :set_user, only: [:show, :edit, :update]
-  
-  def show
-    @user = User.find(params[:id])
-  end
+  before_action :set_user, only: %i[show edit update]
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  def show; end
+
+  def edit; end
 
   def update
-    @user = User.find(params[:id])
     authorize current_user
     respond_to do |format|
       if @user.update(user_params)
@@ -23,14 +18,14 @@ class UsersController < ApplicationController
       end
     end
   end
-  
+
   def new_avatar
     respond_to do |format|
       format.html
       format.js
     end
   end
-  
+
   def team
     authorize current_user
     @pending_users = User.pending.decorate
@@ -49,5 +44,4 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-  
 end

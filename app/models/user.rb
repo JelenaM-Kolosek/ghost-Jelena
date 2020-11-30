@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_attached_file :image, default_url: ":style/avatar.png", :styles => { :medium => "300x300>", :thumb => "100x100>" }
-  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
+  has_attached_file :image, default_url: ':style/avatar.png', styles: { medium: '300x300>', thumb: '100x100>' }
+  validates_attachment_content_type :image, content_type: ['image/jpg', 'image/jpeg', 'image/png']
   before_create :set_admin, :create_slug
   validates :email, uniqueness: true
   enum role: %i[admin author editor]
@@ -14,7 +14,7 @@ class User < ApplicationRecord
   end
 
   scope :pending, -> { where.not(invitation_token: true) }
-  scope :accepted, -> { where(!User.where.not(invitation_token: true)) }
+  scope :accepted, -> { where.not(sign_in_count: 0) }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

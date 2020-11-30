@@ -1,7 +1,6 @@
 <ul class="nav nav-tabs">
 <% if user_signed_in? %>
 <%= link_to "Your profile", user_path(current_user.id)%>
-<%end%>
 </p>
     <li class="nav-item">
      <%= current_user.email%>
