@@ -65,6 +65,10 @@ gem 'letter_opener'
 gem 'prettier'
 gem 'pundit'
 gem 'slug'
+# Pagination
+gem 'kaminari'
+# Active link
+gem 'active_link_to'
 gem 'paperclip'
 gem 'popper_js'
 gem 'rubocop-rails', require: false

@@ -8,12 +8,12 @@
       </tr>
     </thead>
     <tbody>
-    <% User.pending.each do |user| %>
+    <% @pending_users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
         <td><%= user.role %></td>
         <td>Pending</td>
-        <td><%= distance_of_time_in_words((user.invitation_sent_at + 7.days), Time.now)%> </td>
+        <td><%= user.distance_of_time %></td>
       </tr>
       <%end%>
     </tbody>

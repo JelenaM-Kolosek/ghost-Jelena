@@ -2,9 +2,9 @@ class StoryPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.admin? || user.editor?
-        scope.stories_desc
+        scope.all
       else
-        scope.stories_desc_author(user)
+        scope.stories_author(user)
       end
     end
   end
