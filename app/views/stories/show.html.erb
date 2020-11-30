@@ -9,7 +9,7 @@
       <%end%>
     </p>
     <p>Last update at <%= @story.last_update %></p>
-    <%= link_to "Update", edit_story_path(@story), class: "btn btn-primary" %>
-    <%= link_to "Delete", story_path(@story), method: :delete, data: {confirm: "Do you really want to delete the story?"}, class: "btn btn-primary" %>
+    <%= link_to "Update", edit_story_path(@story), class: "btn btn-primary k-story-btn" %>
+    <%= link_to "Delete", story_path(@story), method: :delete, data: {confirm: "Do you really want to delete the story?"}, class: "btn btn-primary k-story-btn" %>
   </div>
 </div>

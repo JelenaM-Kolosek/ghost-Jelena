@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_122624) do
   end
 
 # Could not dump table "users" because of following StandardError
-#   Unknown type 'inet' for column 'current_sign_in_ip'
+#   Unknown type '' for column 'current_sign_in_ip'
 
   add_foreign_key "stories", "users"
   add_foreign_key "taggings", "stories"
