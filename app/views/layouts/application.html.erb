@@ -9,8 +9,8 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <%= render 'layouts/navigation' %>
   <div class="main-app">
-  <%= render 'layouts/navigation' %>
     <%= render partial: 'layouts/alerts' %>
     <%= yield %>
     </div>
