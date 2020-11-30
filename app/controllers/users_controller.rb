@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update]
   include UsersHelper
-
-  def show; end
-
-  def edit; end
+  
+  def show;end
+  
+  def edit;end
 
   def update
     authorize current_user
@@ -20,6 +20,9 @@ class UsersController < ApplicationController
   end
 
   def team
+    authorize current_user
+    @pending_users = User.pending.decorate
+    @accepted_users = Kaminari.paginate_array(User.accepted.decorate).page(params[:page]).per(20)
     render template: 'users/team/team'
   end
 

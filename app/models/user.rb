@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :stories, dependent: :destroy
   before_create :set_admin, :create_slug
   validates :email, uniqueness: true
   enum role: %i[admin author editor]
@@ -13,6 +14,7 @@ class User < ApplicationRecord
   end
 
   scope :pending, -> { where.not(invitation_token: true) }
+  scope :accepted, -> { where.not(sign_in_count: 0) }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -22,5 +24,6 @@ class User < ApplicationRecord
          :recoverable,
          :rememberable,
          :validatable,
+         :trackable,
          invite_for: 7.days
 end

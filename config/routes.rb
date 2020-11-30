@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   devise_scope :user do
     post '/users/invitation/new', to: 'invitations#invite_resource', as: :new_invite
   end
+  resources :stories
 end

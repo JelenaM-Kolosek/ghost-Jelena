@@ -17,4 +17,7 @@ class UserPolicy < ApplicationPolicy
     user.admin?
   end
 
+  def team?
+    user.admin?
+  end
 end
