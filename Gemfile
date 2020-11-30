@@ -64,5 +64,7 @@ gem 'jquery-rails'
 gem 'letter_opener'
 gem 'prettier'
 gem 'pundit'
-gem 'rubocop-rails', require: false
 gem 'slug'
+gem 'paperclip'
+gem 'popper_js'
+gem 'rubocop-rails', require: false
