@@ -1,4 +1,4 @@
-// Place all the styles related to the users controller here.
+// Place all the styles related to the stories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .k-background{
@@ -9,6 +9,8 @@
 }
  
 .k-wrapper{
+  display: flex;
+  flex-direction: column;
   align-content: center;
   justify-content: center;
   border: 2px solid black;

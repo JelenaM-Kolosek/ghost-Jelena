@@ -59,6 +59,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootstrap', '~> 4.0.0'
 gem 'devise'
 gem 'devise_invitable', '~>2.0.3'
+gem 'draper'
 gem 'jquery-rails'
 gem 'letter_opener'
 gem 'prettier'
