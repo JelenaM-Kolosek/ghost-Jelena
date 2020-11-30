@@ -1,18 +1,5 @@
-
 <div class="k-user-wrapper">
-<p id="notice"><%= notice %></p>
-
-  <%= image_tag @user.image.url(:thumb), class: 'avatarimg' %>
-
-<%= link_to 'Edit image', user_new_avatar_path(@user),  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#exampleModalCenter', class: 'btn btn-primary btn-lg'}  %>
-
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-    
-    </div>
-    </div>
-  </div>
+ <%= @user.image%>
 <p>
   <strong>Full name:</strong>
   <%= @user.full_name %>

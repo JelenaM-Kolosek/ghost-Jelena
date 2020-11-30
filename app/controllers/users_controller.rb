@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  include UsersHelper
   before_action :set_user, only: %i[show edit update]
+  include UsersHelper
   
   def show;end
   
@@ -16,13 +16,6 @@ class UsersController < ApplicationController
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def new_avatar
-    respond_to do |format|
-      format.html
-      format.js
     end
   end
 
@@ -42,7 +35,6 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]).decorate
   end
-  
 end

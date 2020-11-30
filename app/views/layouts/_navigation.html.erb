@@ -1,13 +1,10 @@
 <ul class="nav nav-tabs">
 <% if user_signed_in? %>
-<%= link_to "Your profile", user_path(current_user.id)%>
-</p>
-    <li class="nav-item">
+    <li class="nav-item k-user">
      <%= current_user.email%>
     </li>
   <li class="nav-item">
-  <%= active_link_to "Your profile", user_path(current_user.id),  active: :exclusive, class: "nav-link"%>
-
+  <%= link_to "Your profile", user_path(current_user.id), class: "nav-link active"%>
   </li>
   <li class="nav-item">
   <%= active_link_to "Team", user_team_path(current_user), class: "nav-link"%>
