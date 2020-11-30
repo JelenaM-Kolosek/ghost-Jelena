@@ -1,41 +1,26 @@
 class User < ApplicationRecord
+  before_create :set_admin, :create_slug
+  validates :email, uniqueness: true
+  enum role: %i[admin author editor]
   mount_uploader :image, ImageUploader
-  # validates :slug, uniqueness: true
 
   def create_slug
-    # index = self.full_name.index(' ')
-    # self.full_name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/,'')[index+2..-1]
+    self.slug = full_name.split(' ')[0].to_s + '-' + full_name.split(' ')[1]&.first.to_s
   end
 
-  def update_slug
-    update_attributes slug: assign_slug
+  def set_admin
+    self.role = :admin if User.count == 0
   end
 
-  private
-
-  def assign_slug
-    self.slug = create_slug
-  end
-
-  after_update :assign_slug
-
-  enum role: %i[admin author editor]
-  after_initialize :set_default_role, if: :new_record?
-
-  def set_default_role
-    self.role ||= :author
-  end
+  scope :pending, -> { where.not(invitation_token: true) }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
-  after_create do
-    if User.count == 1
-      self.role = :admin
-      self.admin = true
-      save
-    end
-  end
+  devise :invitable,
+         :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :rememberable,
+         :validatable,
+         invite_for: 7.days
 end

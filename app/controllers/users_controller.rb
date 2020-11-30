@@ -19,6 +19,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def team
+    render template: 'users/team/team'
+  end
+
+  def user_invite
+    @user = User.new
+    authorize current_user
+    render 'users/team/user_invite'
+  end
+
+  private
+
   def set_user
     @user = User.find(params[:id]).decorate
   end

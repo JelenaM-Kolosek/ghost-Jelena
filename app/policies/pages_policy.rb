@@ -1,5 +1,5 @@
 class PagesPolicy < ApplicationPolicy
-    def index
-        true
-    end
+  def index
+    true
+  end
 end
