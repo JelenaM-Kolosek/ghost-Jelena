@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates_attachment_content_type :image, content_type: ['image/jpg', 'image/jpeg', 'image/png']
   before_create :set_admin, :create_slug
   validates :email, uniqueness: true
+  has_many :stories, dependent: :destroy
   enum role: %i[admin author editor]
 
   def create_slug
