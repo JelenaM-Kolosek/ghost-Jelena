@@ -26,5 +26,8 @@
   <%= @user.slug %>
 </p>
 
+<% if current_user.admin? %>
 <%= link_to 'Edit', edit_user_path(@user.id), class: 'btn btn-primary k-btn' %>
+<%= link_to 'Delete', user_path(@user), method: :delete, data: {confirm: "Do you really want to delete user #{@user.full_name}?"},class: 'btn btn-primary k-btn' %>
+<%end%>
 </div>
