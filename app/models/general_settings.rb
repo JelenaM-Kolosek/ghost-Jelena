@@ -1,0 +1,2 @@
+class GeneralSettings < ApplicationRecord
+end
