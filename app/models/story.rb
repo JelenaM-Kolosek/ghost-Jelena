@@ -5,6 +5,7 @@ class Story < ApplicationRecord
   has_many :tags, through: :taggings, dependent: :destroy
 
   scope :stories_author, ->(user) { where(user_id: user.id) }
+  scope :search, ->(title) { where("title like ?", "%#{title}%") }
 
   def tag_list
     tags.join(', ')

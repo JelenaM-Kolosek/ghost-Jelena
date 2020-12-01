@@ -6,6 +6,7 @@ class StoriesController < ApplicationController
 
   def index
     @stories = policy_scope(Story)
+    @stories = @stories.search(params[:search]) if params[:search]
   end
 
   def new
