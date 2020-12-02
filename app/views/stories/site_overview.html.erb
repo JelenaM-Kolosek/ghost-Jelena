@@ -12,3 +12,7 @@
   </div>
 </div>
 <%end%>
+<div class="pagination">
+  <%= paginate @stories_overview %>
+  <%= link_to_next_page @stories_overview, 'Next Page' %>
+</div>

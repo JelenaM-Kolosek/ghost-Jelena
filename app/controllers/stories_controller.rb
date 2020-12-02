@@ -9,6 +9,7 @@ class StoriesController < ApplicationController
   def index
     @stories = policy_scope(Story)
     @stories = @stories.search(params[:search]) if params[:search]
+    @stories = Kaminari.paginate_array(@stories).page(params[:page]).per(1)
   end
 
   def new
@@ -52,6 +53,7 @@ class StoriesController < ApplicationController
   def site_overview
     @stories_overview = Story.all
     @stories_overview = @stories_overview.search(params[:search]) if params[:search]
+    @stories_overview = Kaminari.paginate_array(@stories_overview).page(params[:page]).per(1)
   end
 
   private

@@ -13,3 +13,7 @@
   </div>
 </div>
 <%end%>
+<div class="pagination">
+  <%= paginate @stories %>
+  <%= link_to_next_page @stories, 'Next Page' %>
+</div>
