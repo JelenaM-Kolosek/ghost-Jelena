@@ -2,7 +2,9 @@ class StoriesController < ApplicationController
   include StoriesHelper
   before_action :set_story, only: %i[show edit update destroy]
 
-  def show; end
+  def show
+    redirect_to @story, status: :moved_permanently if request.path != story_path(@story)
+  end
 
   def index
     @stories = policy_scope(Story)
@@ -47,9 +49,14 @@ class StoriesController < ApplicationController
     end
   end
 
+  def site_overview
+    @stories_overview = Story.all
+    @stories_overview = @stories_overview.search(params[:search]) if params[:search]
+  end
+
   private
 
   def set_story
-    @story = Story.find(params[:id]).decorate
+    @story = Story.friendly.find(params[:id]).decorate
   end
 end

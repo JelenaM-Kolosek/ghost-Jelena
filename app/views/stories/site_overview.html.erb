@@ -1,0 +1,14 @@
+<div class="search-form">
+    <%= form_tag(site_overview_path, method: :get) do %>
+      <%= text_field_tag :search, params[:search], class: "search-field k-search-input" %>
+      <%= submit_tag "Search", class: "btn btn-primary k-story-btn"%>
+    <%end%>
+</div>
+<% @stories_overview.each do |story| %>
+<div class="k-background">
+  <div class="k-wrapper">
+      <p><%= link_to story.title, story_path(story) %></p>
+      <p><%= story.user.full_name %></p>
+  </div>
+</div>
+<%end%>
