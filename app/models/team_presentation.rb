@@ -1,0 +1,2 @@
+class TeamPresentation < ApplicationRecord
+end
