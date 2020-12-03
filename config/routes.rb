@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      resources :stories
+    end
+  end
+
   root to: 'pages#home'
   devise_for :users, controllers: { sessions: 'sessions' }
   resources :users do
