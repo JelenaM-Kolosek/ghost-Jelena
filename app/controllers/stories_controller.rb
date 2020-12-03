@@ -1,6 +1,7 @@
 class StoriesController < ApplicationController
   include StoriesHelper
   before_action :set_story, only: %i[show edit update destroy]
+  before_action :authorize_actions, only: %i[edit update destroy]
 
   def show
     redirect_to @story, status: :moved_permanently if request.path != story_path(@story)
@@ -9,7 +10,7 @@ class StoriesController < ApplicationController
   def index
     @stories = policy_scope(Story)
     @stories = @stories.search(params[:search]) if params[:search]
-    @stories = Kaminari.paginate_array(@stories).page(params[:page]).per(1)
+    @stories = Kaminari.paginate_array(@stories).page(params[:page]).per(20)
   end
 
   def new
@@ -51,14 +52,17 @@ class StoriesController < ApplicationController
   end
 
   def site_overview
-    @stories_overview = Story.all
-    @stories_overview = @stories_overview.search(params[:search]) if params[:search]
-    @stories_overview = Kaminari.paginate_array(@stories_overview).page(params[:page]).per(1)
+    @stories_overview = params[:search] ? Story.all.search(params[:search]) : Story.all
+    @stories_overview = Kaminari.paginate_array(@stories_overview).page(params[:page]).per(20)
   end
 
   private
 
   def set_story
     @story = Story.friendly.find(params[:id]).decorate
+  end
+
+  def authorize_actions
+    authorize @story
   end
 end
