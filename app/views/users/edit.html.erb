@@ -44,7 +44,9 @@
 <%= form.text_field :slug, class: "form-control" %>
 </div>
 <div class="k-user-input" style="margin: 10px;">
-<%= link_to 'Change password', edit_user_password_path(current_user.id) %>
+<% if current_user == @user %>
+<%= link_to 'Change password', edit_user_registration_path(current_user.id) %>
+<% end %>
 </div>
     <div class="actions">
       <%= form.submit class:  "btn btn-primary k-btn" %>
