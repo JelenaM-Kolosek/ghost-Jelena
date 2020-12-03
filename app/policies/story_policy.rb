@@ -25,14 +25,20 @@ class StoryPolicy < ApplicationPolicy
   end
 
   def edit?
-    @user.admin? || @user.editor? || (@user.author? && @user == @story.user)
+    @user.admin? || @user.editor? || users_story
   end
 
   def update?
-    @user.admin? || @user.editor? || (@user.author? && @user == @story.user)
+    @user.admin? || @user.editor? || users_story
   end
 
   def destroy?
     @user.admin? || @user == @story.user
+  end
+
+  private
+
+  def users_story
+    (@user.author? && @user == @story.user)
   end
 end
