@@ -1,0 +1,28 @@
+<h1> Title & Description </h1>
+<% @team_presentations.each do |presentation| %>
+<div class="k-background">
+  <div class="k-wrapper">
+  <div>
+    <%= presentation.title%>  
+  </div>
+  <div> 
+    <%= presentation.description%> 
+  </div>  
+  <div>
+  <%= link_to "Edit", edit_team_presentation_path(presentation) %>
+  </div>
+</div>
+</div>
+<%end%>
+
+<p>
+  <button class="btn btn-primary btn-text collapsed btn-team" type= "button" data-toggle="collapse"  data-target="#inputCollapse" aria-expanded="false" aria-controls="collapseExample">
+    <span> Expand </span>
+    <a> Close </a>
+  </button>
+</p>
+<div class="collapse" id="inputCollapse">
+  <div class="card card-body">
+      <%= render partial: "team_presentations/team_presentation_new_form"%>    
+  </div>
+</div>

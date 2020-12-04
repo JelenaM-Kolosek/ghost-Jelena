@@ -11,10 +11,10 @@
  * It is generally better to create a new file per style scope.
  *
  */
-
- @import 'bootstrap';
- @import 'stories';
+ @import 'bootstrap/scss/bootstrap';
+ @import 'stories.scss';
  @import 'users';
+ @import 'team_presentations';
 
  .main-app{
      display: flex;

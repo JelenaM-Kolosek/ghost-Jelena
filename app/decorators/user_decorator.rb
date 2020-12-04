@@ -10,7 +10,7 @@ class UserDecorator < Draper::Decorator
       h.image_tag 'avatar.png', size: '200x200', class: 'avatarimg'
     end
   end
-  
+
   def last_sign_in
     object.last_sign_in_at.strftime('%m/%d/%y - %I:%M %p') unless object.last_sign_in_at.nil?
   end

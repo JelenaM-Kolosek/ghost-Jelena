@@ -1,0 +1,10 @@
+// Place all the styles related to the team_presentation controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.btn-text a{display:inline}
+.btn-text:not(.collapsed)  span{display:none}
+.btn-text.collapsed a {display:none}
+
+.btn-team{
+  margin: 30px;
+}
