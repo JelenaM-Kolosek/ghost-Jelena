@@ -77,3 +77,5 @@ gem 'paranoia'
 gem 'popper_js'
 gem 'rubocop-rails', require: false
 gem 'sidekiq'
+gem 'redis'
+
