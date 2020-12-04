@@ -1,11 +1,10 @@
-<%= link_to 'Add story', new_story_path, class:" btn btn-primary k-story-btn" %>
-  <div class="search-form">
-    <%= form_tag(stories_path, method: :get) do %>
+<div class="search-form">
+    <%= form_tag(site_overview_path, method: :get) do %>
       <%= text_field_tag :search, params[:search], class: "search-field k-search-input" %>
       <%= submit_tag "Search", class: "btn btn-primary k-story-btn"%>
     <%end%>
-    </div>
-<% @stories.each do |story| %>
+</div>
+<% @stories_overview.each do |story| %>
 <div class="k-background">
   <div class="k-wrapper">
       <p><%= link_to story.title, story_path(story) %></p>
@@ -14,6 +13,6 @@
 </div>
 <%end%>
 <div class="pagination">
-  <%= paginate @stories %>
-  <%= link_to_next_page @stories, 'Next Page' %>
+  <%= paginate @stories_overview %>
+  <%= link_to_next_page @stories_overview, 'Next Page' %>
 </div>

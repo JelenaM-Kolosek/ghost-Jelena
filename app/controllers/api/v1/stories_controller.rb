@@ -6,6 +6,7 @@ module Api
 
       include StoriesHelper
       before_action :set_story, only: %i[show edit update destroy]
+      before_action :authorize_actions, only: %i[edit update destroy]
 
       def index
         @stories = policy_scope(Story)
@@ -14,7 +15,7 @@ module Api
       end
 
       def show
-        respond_with @user
+        respond_with @story
       end
 
       def create
@@ -33,6 +34,10 @@ module Api
 
       def set_story
         @story = Story.find(params[:id]).decorate
+      end
+
+      def authorize_actions
+        authorize @story
       end
 
       def restrict_access

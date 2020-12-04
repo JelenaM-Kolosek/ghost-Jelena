@@ -72,6 +72,11 @@ gem 'slug'
 gem 'kaminari'
 # Active link
 gem 'active_link_to'
+gem 'friendly_id', '~> 5.4.0'
 gem 'paperclip'
-gem 'redis'
+gem 'paranoia'
+gem 'popper_js'
 gem 'rubocop-rails', require: false
+gem 'sidekiq'
+gem 'redis'
+
