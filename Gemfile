@@ -73,5 +73,9 @@ gem 'kaminari'
 # Active link
 gem 'active_link_to'
 gem 'paperclip'
-gem 'redis'
+gem 'paranoia'
+gem 'popper_js'
 gem 'rubocop-rails', require: false
+gem 'sidekiq'
+gem 'redis'
+
