@@ -32,7 +32,11 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner'
+  gem 'factory_bot'
+  gem 'faker'
   gem 'rspec-rails'
+  gem 'shoulda-callback-matchers'
+  gem 'shoulda-matchers', '~> 4.0'
 end
 
 group :development do
@@ -49,6 +53,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
+  gem 'database_cleaner-active_record'
   gem 'pry'
   gem 'webdrivers'
 end
@@ -76,6 +81,6 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'paperclip'
 gem 'paranoia'
 gem 'popper_js'
+gem 'redis'
 gem 'rubocop-rails', require: false
 gem 'sidekiq'
-gem 'redis'
