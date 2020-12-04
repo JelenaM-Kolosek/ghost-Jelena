@@ -97,6 +97,7 @@ GEM
     climate_control (0.2.0)
     coderay (1.1.3)
     concurrent-ruby (1.1.7)
+    connection_pool (2.2.3)
     crass (1.0.6)
     database_cleaner (1.8.5)
     devise (4.7.3)
@@ -180,6 +181,8 @@ GEM
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
     parallel (1.20.1)
+    paranoia (2.4.2)
+      activerecord (>= 4.0, < 6.1)
     parser (2.7.2.0)
       ast (~> 2.4.1)
     popper_js (1.16.0)
@@ -289,6 +292,10 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sidekiq (6.1.2)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     slug (4.1.1)
       activerecord (> 3.0.0)
       activesupport (> 3.0.0)
@@ -359,6 +366,7 @@ DEPENDENCIES
   letter_opener
   listen (~> 3.2)
   paperclip
+  paranoia
   popper_js
   prettier
   pry
@@ -371,6 +379,7 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (>= 6)
   selenium-webdriver
+  sidekiq
   slug
   spring
   spring-watcher-listen (~> 2.0.0)

@@ -1,9 +1,12 @@
 class User < ApplicationRecord
   has_many :stories, dependent: :destroy
   before_create :set_admin, :create_slug
+  before_update :create_slug
   validates :email, uniqueness: true
   enum role: %i[admin author editor]
   mount_uploader :image, ImageUploader
+  # soft deleting
+  acts_as_paranoid
 
   def create_slug
     self.slug = full_name.split(' ')[0].to_s + '-' + full_name.split(' ')[1]&.first.to_s
