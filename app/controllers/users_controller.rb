@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update]
+  before_action :set_user, only: %i[show edit update destroy]
   include UsersHelper
-  
-  def show;end
-  
-  def edit;end
+
+  def show; end
+
+  def edit; end
 
   def update
     authorize current_user
@@ -30,6 +30,12 @@ class UsersController < ApplicationController
     @user = User.new
     authorize current_user
     render 'users/team/user_invite'
+  end
+
+  def destroy
+    authorize current_user
+    DeleteTeamMemberJob.perform_later(@user)
+    redirect_to user_team_path(current_user)
   end
 
   private

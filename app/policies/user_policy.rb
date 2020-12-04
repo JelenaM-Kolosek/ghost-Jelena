@@ -1,11 +1,5 @@
 class UserPolicy < ApplicationPolicy
-  attr_reader :user, :post
-
-  def initialize(user, _post)
-    @user = user
-  end
-
-  def update?
+  def edit?
     user.admin?
   end
 
@@ -18,6 +12,10 @@ class UserPolicy < ApplicationPolicy
   end
 
   def team?
+    user.admin?
+  end
+
+  def destroy?
     user.admin?
   end
 end

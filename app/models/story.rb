@@ -1,10 +1,13 @@
 class Story < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: %i[slugged history]
   default_scope { order(created_at: :desc) }
   belongs_to :user
   has_many :taggings
   has_many :tags, through: :taggings, dependent: :destroy
 
   scope :stories_author, ->(user) { where(user_id: user.id) }
+  scope :search, ->(title) { where('title like ?', "%#{title}%") }
 
   def tag_list
     tags.join(', ')

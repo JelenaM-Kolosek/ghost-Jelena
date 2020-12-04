@@ -1,4 +1,4 @@
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs topnav">
 <% if user_signed_in? %>
     <li class="nav-item k-user">
      <%= current_user.email%>
@@ -10,12 +10,16 @@
   <li class="nav-item">
   <%= active_link_to "Team", user_team_path(current_user), class: "nav-link"%>
   </li>
+  <%end%>
    <li class="nav-item">
   <%= active_link_to "Team presentation", team_presentations_path, class: "nav-link"%>
   </li>
   <%end%>
    <li class="nav-item">
   <%= active_link_to "Story", stories_path, class: "nav-link"  %>
+  </li>
+  <li class="nav-item">
+  <%= active_link_to "Site overview", site_overview_path, class: "nav-link"  %>
   </li>
   <li class="nav-item">
   <%= active_link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link"  %>
