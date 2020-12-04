@@ -54,8 +54,12 @@ ActiveRecord::Schema.define(version: 20_201_203_135_425) do
     t.datetime 'updated_at', precision: 6, null: false
   end
 
-  # Could not dump table "users" because of following StandardError
-  #   Unknown type 'inet' for column 'current_sign_in_ip'
+  create_table "team_presentations", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   add_foreign_key 'stories', 'users'
   add_foreign_key 'taggings', 'stories'
