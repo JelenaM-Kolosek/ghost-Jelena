@@ -32,6 +32,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner'
+  gem 'factory_bot_rails'
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
 end
 
@@ -76,6 +79,6 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'paperclip'
 gem 'paranoia'
 gem 'popper_js'
+gem 'redis'
 gem 'rubocop-rails', require: false
 gem 'sidekiq'
-gem 'redis'
