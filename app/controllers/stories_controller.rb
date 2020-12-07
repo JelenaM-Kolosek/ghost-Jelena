@@ -21,9 +21,9 @@ class StoriesController < ApplicationController
     @story = Story.new(story_params)
     @story.user = current_user
     if @story.save
-      redirect_to story_path(@story)
+      redirect_to story_path(@story), notice: 'Story was successfully created.'
     else
-      redirect_to new_story_path
+      redirect_to new_story_path,notice: 'Error! Try again!'
     end
   end
 

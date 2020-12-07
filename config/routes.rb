@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
   devise_for :users, controllers: { sessions: 'sessions' }
-  resources :users, only: %i[edit update destroy show] do
+  resources :users, only: %i[edit update destroy show index] do
     get 'invite', action: :user_invite
     get 'team', action: :team
   end

@@ -2,7 +2,7 @@ class InvitationsController < Devise::InvitationsController
   def invite_resource
     User.invite!(invite_params, current_user) do |invitable|
       invitable.update!(role: invite_params[:role])
-      redirect_to user_team_path(current_user)
+      redirect_to user_team_path(current_user), notice: 'Invitation has been sent successfully'
     end
   end
 

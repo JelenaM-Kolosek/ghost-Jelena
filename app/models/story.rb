@@ -5,6 +5,7 @@ class Story < ApplicationRecord
   belongs_to :user
   has_many :taggings
   has_many :tags, through: :taggings, dependent: :destroy
+  validates :title, presence: true
 
   scope :stories_author, ->(user) { where(user_id: user.id) }
   scope :search, ->(title) { where('title like ?', "%#{title}%") }
